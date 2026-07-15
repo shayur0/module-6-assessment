@@ -30,13 +30,18 @@ const RISKY = [
   [/\bmkfs\b/, "reformats a filesystem"],
   [/\bdd\s+if=/, "does a raw disk/block copy"],
   [/\b(shutdown|reboot)\b/, "restarts or shuts down the computer"],
-  [/\b(curl|wget)\b.*(-X\s*POST|--data|-d\s)/i, "sends data off this computer"],
+  [
+    (cmd) => /\b(curl|wget)\b.*(-X\s*POST|--data|-d\s)/i.test(cmd) &&
+      !/\b(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])\b/i.test(cmd),
+    "sends data off this computer",
+  ],
   [/\b(scp|rsync)\b.*:/, "copies files to another machine"],
   [/\bmail(x)?\b|\bsendmail\b/, "sends an email"],
 ];
 
 for (const [pattern, reason] of RISKY) {
-  if (pattern.test(command)) {
+  const matches = typeof pattern === "function" ? pattern(command) : pattern.test(command);
+  if (matches) {
     console.error(
       `Blocked: this command ${reason}, which Ledger can't undo or which would leave this ` +
       `computer. Per CLAUDE.md's safety promises, don't run it directly — instead mark the ` +
