@@ -1,2 +1,19 @@
 data/~$*.xlsx
 .DS_Store
+
+# Real data lives here locally once you start using Ledger for real — kept out of git so a
+# future commit in this repo can't accidentally push real financial data. The versions already
+# committed (sample/demo data) stay in git history; local edits from here on don't sync.
+data/expenses.xlsx
+data/log.json
+data/learnings.json
+tasks.json
+notes/
+logs/
+CLAUDE.md
+README.md
+.claude/skills/scan-receipts/SKILL.md
+.claude/skills/flag-ambiguous-receipt/SKILL.md
+.claude/skills/round-summary/SKILL.md
+.claude/skills/daily-wrap-up/SKILL.md
+scripts/seed-expenses-from-dashboard.js
