@@ -1,0 +1,18 @@
+{
+  "entries": [
+    {
+      "at": "2026-07-15T08:19:07.117Z",
+      "job": "Seed expenses.xlsx",
+      "action": "Seeded data/expenses.xlsx with 18 confirmed rows and 13 needs-review rows from a sample Drive folder scan. Created 6 needs-OK jobs so open questions can be answered on the web page.",
+      "result": "needs_ok",
+      "text": "Seeded expenses.xlsx from sample data: 18 confirmed, 13 need review (6 jobs created)."
+    },
+    {
+      "at": "2026-07-15T08:19:07.117Z",
+      "job": "Scan Receipts folder for new receipts/invoices",
+      "action": "task-doer scanned the sample Receipts Drive folder and compared it against expenses.xlsx; verifier independently re-checked the Drive folder, the spreadsheet, and tasks.json.",
+      "result": "passed",
+      "text": "Scanned Receipts folder: 0 new receipts (all 31 already recorded), 0 duplicates created. Verifier score 5/5/5 - PASS."
+    }
+  ]
+}

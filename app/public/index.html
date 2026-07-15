@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ledger</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Ledger</h1>
+    <p class="subtitle">short and clear, like a careful accountant — no fluff</p>
+  </header>
+
+  <section class="card add-job">
+    <h2>Add a job</h2>
+    <form id="job-form">
+      <label>
+        Title
+        <input type="text" id="job-title" placeholder="e.g. Scan Receipts folder" required />
+      </label>
+      <label>
+        Description
+        <textarea id="job-description" rows="2" placeholder="Plain description of what you want done"></textarea>
+      </label>
+      <label class="priority-label">
+        Priority
+        <select id="job-priority">
+          <option value="High">High</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </label>
+      <button type="submit">Add job</button>
+    </form>
+  </section>
+
+  <section id="needs-ok-section" class="card hidden">
+    <h2>Needs your OK</h2>
+    <div id="needs-ok-list" class="job-list"></div>
+  </section>
+
+  <section class="card">
+    <h2>Jobs</h2>
+    <div id="job-list" class="job-list"></div>
+  </section>
+
+  <section class="card">
+    <h2>Log</h2>
+    <div id="log-list" class="log-list"></div>
+  </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
