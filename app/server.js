@@ -5,7 +5,8 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
-const { readXlsx } = require("./lib/xlsx");
+const { readXlsx, writeXlsx } = require("./lib/xlsx");
+const { EXPENSE_ROWS } = require("./lib/demo-data");
 
 const ROOT = path.join(__dirname, "..");
 
@@ -17,6 +18,16 @@ try {
 
 const TASKS_FILE = path.join(ROOT, "tasks.json");
 const EXPENSES_FILE = path.join(ROOT, "data", "expenses.xlsx");
+
+// data/expenses.xlsx holds real financial data and is gitignored on purpose — it never gets
+// pushed. On a fresh deploy (or anywhere else that file is missing) seed a fictional demo
+// spreadsheet instead, so Ask Ledger has something real to reason over. Never touches an
+// expenses.xlsx that already exists (e.g. your real local data).
+if (!fs.existsSync(EXPENSES_FILE)) {
+  fs.mkdirSync(path.dirname(EXPENSES_FILE), { recursive: true });
+  writeXlsx(EXPENSES_FILE, "Expenses", EXPENSE_ROWS);
+  console.log("data/expenses.xlsx was missing — seeded a fictional demo spreadsheet instead.");
+}
 const LOG_FILE = path.join(ROOT, "data", "log.json");
 const LEARNINGS_FILE = path.join(ROOT, "data", "learnings.json");
 const PUBLIC_DIR = path.join(__dirname, "public");
