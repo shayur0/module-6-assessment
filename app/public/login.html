@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ledger — Log in</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="wrap login-wrap">
+  <header>
+    <h1>Ledger</h1>
+    <p class="subtitle">short and clear, like a careful accountant — no fluff</p>
+  </header>
+
+  <section class="card">
+    <h2>Log in</h2>
+    <form id="login-form">
+      <label>
+        Username
+        <input type="text" id="login-username" autocomplete="username" required />
+      </label>
+      <label>
+        Password
+        <input type="password" id="login-password" autocomplete="current-password" required />
+      </label>
+      <button type="submit">Log in</button>
+    </form>
+    <p id="login-error" class="error hidden"></p>
+  </section>
+</div>
+
+<script>
+  document.getElementById("login-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const username = document.getElementById("login-username").value;
+    const password = document.getElementById("login-password").value;
+    const errorEl = document.getElementById("login-error");
+    errorEl.classList.add("hidden");
+
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (res.ok) {
+      window.location.href = "/";
+      return;
+    }
+
+    const data = await res.json().catch(() => ({}));
+    errorEl.textContent = data.error || "Log in failed.";
+    errorEl.classList.remove("hidden");
+  });
+</script>
+</body>
+</html>

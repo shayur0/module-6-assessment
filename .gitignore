@@ -1,6 +1,9 @@
 data/~$*.xlsx
 .DS_Store
 
+# Real secrets — never committed. .env.example (blank values) stays tracked as the template.
+.env
+
 # Real data lives here locally once you start using Ledger for real — kept out of git so a
 # future commit in this repo can't accidentally push real financial data. The versions already
 # committed (sample/demo data) stay in git history; local edits from here on don't sync.

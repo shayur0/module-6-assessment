@@ -174,6 +174,30 @@ document.getElementById("job-form").addEventListener("submit", async (e) => {
   loadJobs();
 });
 
+document.getElementById("ask-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const input = document.getElementById("ask-input");
+  const output = document.getElementById("ask-output");
+  const message = input.value.trim();
+  if (!message) return;
+
+  output.classList.remove("hidden");
+  output.textContent = "Thinking…";
+
+  const res = await fetch("/api/ask", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message }),
+  });
+  const data = await res.json().catch(() => ({}));
+  output.textContent = res.ok ? data.reply : `Error: ${data.error || "something went wrong."}`;
+});
+
+document.getElementById("logout-btn").addEventListener("click", async () => {
+  await fetch("/api/logout", { method: "POST" });
+  window.location.href = "/login";
+});
+
 loadJobs();
 loadLog();
 setInterval(loadJobs, 4000);

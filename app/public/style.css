@@ -38,6 +38,23 @@ html, body {
 
 header h1 { font-size: 24px; font-weight: 700; margin: 0 0 4px; }
 header .subtitle { color: var(--text-secondary); font-size: 14px; margin: 0 0 24px; }
+header.header-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+header.header-row h1, header.header-row .subtitle { margin-bottom: 0; }
+
+.login-wrap { max-width: 380px; padding-top: 72px; }
+.error { color: var(--status-critical); font-size: 13px; margin: 12px 0 0; }
+.error.hidden { display: none; }
+
+.ask-output {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--page-plane);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  white-space: pre-wrap;
+}
+.ask-output.hidden { display: none; }
 
 .card {
   background: var(--surface-1);

@@ -1,0 +1,12 @@
+{
+  "name": "ledger",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Ledger — a personal bookkeeping bot with a web UI.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node app/server.js"
+  }
+}

@@ -8,10 +8,25 @@
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <h1>Ledger</h1>
-    <p class="subtitle">short and clear, like a careful accountant — no fluff</p>
+  <header class="header-row">
+    <div>
+      <h1>Ledger</h1>
+      <p class="subtitle">short and clear, like a careful accountant — no fluff</p>
+    </div>
+    <button id="logout-btn" class="secondary">Log out</button>
   </header>
+
+  <section class="card">
+    <h2>Ask Ledger</h2>
+    <form id="ask-form">
+      <label>
+        Ask a question or give it a plain instruction
+        <textarea id="ask-input" rows="3" placeholder="e.g. What was my biggest expense category last month?" required></textarea>
+      </label>
+      <button type="submit">Run</button>
+    </form>
+    <div id="ask-output" class="ask-output hidden"></div>
+  </section>
 
   <section class="card add-job">
     <h2>Add a job</h2>
