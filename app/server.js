@@ -75,8 +75,8 @@ function readBody(req) {
       if (!chunks) return resolve({});
       try {
         resolve(JSON.parse(chunks));
-      } catch (e) {
-        reject(e);
+      } catch {
+        reject(Object.assign(new Error("Invalid JSON body."), { status: 400 }));
       }
     });
     req.on("error", reject);
@@ -347,7 +347,9 @@ const server = http.createServer(async (req, res) => {
 
     sendJson(res, 404, { error: "Not found" });
   } catch (err) {
-    sendJson(res, 500, { error: String(err && err.message ? err.message : err) });
+    sendJson(res, err && err.status ? err.status : 500, {
+      error: String(err && err.message ? err.message : err),
+    });
   }
 });
 

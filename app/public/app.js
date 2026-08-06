@@ -50,7 +50,7 @@ function jobCard(job) {
       <div class="job-meta">added ${timeAgo(job.createdAt)} · updated ${timeAgo(job.updatedAt)}</div>
       <div class="notes">${notesHtml}</div>
       <form class="note-form" data-id="${job.id}">
-        <input type="text" placeholder="Add a note (job, question, or correction)" />
+        <input type="text" id="note-input-${job.id}" name="note-${job.id}" placeholder="Add a note (job, question, or correction)" />
         <button type="submit">Send</button>
       </form>
     </div>
