@@ -1,5 +1,6 @@
 data/~$*.xlsx
 .DS_Store
+node_modules/
 
 # Real secrets — never committed. .env.example (blank values) stays tracked as the template.
 .env

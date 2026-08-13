@@ -7,6 +7,11 @@
     "node": ">=20"
   },
   "scripts": {
-    "start": "node app/server.js"
+    "start": "node app/server.js",
+    "db:check": "node scripts/db-check.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "pg": "^8.23.0"
   }
 }
