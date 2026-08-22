@@ -14,10 +14,4 @@ data/learnings.json
 tasks.json
 notes/
 logs/
-CLAUDE.md
-README.md
-.claude/skills/scan-receipts/SKILL.md
-.claude/skills/flag-ambiguous-receipt/SKILL.md
-.claude/skills/round-summary/SKILL.md
-.claude/skills/daily-wrap-up/SKILL.md
 scripts/seed-expenses-from-dashboard.js
