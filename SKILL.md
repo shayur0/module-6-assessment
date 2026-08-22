@@ -37,8 +37,9 @@ questions, and leaving correction notes.
 
 ## Hooks (`.claude/settings.json` + `.claude/hooks/`)
 
-- `guard-rulebook.js` (PreToolUse, Edit/Write) — blocks edits to `CLAUDE.md`/settings during
-  normal runs.
+- `guard-rulebook.js` (PreToolUse, Edit/Write **and** Bash) — blocks edits to
+  `CLAUDE.md`/settings/hooks during normal runs, including a Bash redirect/`sed -i`/etc. onto
+  those files, not just the Edit/Write tools.
 - `guard-secrets.js` (PreToolUse, Edit/Write) — blocks writing API keys/tokens into files.
 - `guard-destructive-bash.js` (PreToolUse, Bash) — blocks destructive shell commands.
 - `notes-saved.js` (PostToolUse, Edit/Write) — after a note is saved in `notes/`, nudges the
